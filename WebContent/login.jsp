@@ -14,16 +14,16 @@
 	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 </head>
 <body>
-<canvas id="c" style="position: absolute;z-index: -100;margin: 0px;width: 98%"></canvas>
+<canvas id="c" style="position: absolute;z-index: -100;margin: 0px;width:96%"></canvas>
 	<div style="width: 400px;margin: auto;margin-top: 100px;">
 		<div class="easyui-panel" title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;二手车商城-后台管理系统-用户登陆"  region="center" style="width:400px;max-width:400px;padding:30px 60px;margin: auto">
 	
 		<form id="ff" method="post" action="admin/UserAction!login.action">
 			<div style="margin-bottom:20px">
-				<input class="easyui-textbox" name="username" style="width:100%" data-options="label:'账户:',required:true">
+				<input class="easyui-textbox" name="u.username" value="Regina" style="width:100%" data-options="label:'账户:',required:true">
 			</div>
 			<div style="margin-bottom:20px">
-				<input class="easyui-passwordbox" name="password"  style="width:100%" data-options="label:'密码:',required:true">
+				<input class="easyui-passwordbox" name="u.password" value="123456"  style="width:100%" data-options="label:'密码:',required:true">
 			</div>
 			<div style="margin-bottom:20px">
 				<input class="easyui-textbox" name="code"  maxlength="4" style="width:60%" data-options="label:'验证码:'">

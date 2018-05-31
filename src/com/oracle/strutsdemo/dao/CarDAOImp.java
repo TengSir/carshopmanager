@@ -1,5 +1,6 @@
 package com.oracle.strutsdemo.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -20,7 +21,15 @@ public class CarDAOImp extends BaseDAOImp  implements CarDao {
 
 	@Override
 	public boolean delete(Object id) {
-		return false;
+		int  n=0;
+		PreparedStatement sta=getPreSta("delete from  car where carid=?");
+		try {
+			  sta.setInt(1, Integer.parseInt(id.toString()));
+			  n=sta.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return n>0?true:false;
 	}
 
 	@Override
@@ -225,7 +234,7 @@ public class CarDAOImp extends BaseDAOImp  implements CarDao {
 		ArrayList<Car> cars = new ArrayList<Car>();// 定义一个集合存储查询出来的所有车辆信息
 		ResultSet rs = null;
 		try {
-			rs = getSta().executeQuery("select *  from  car    limit  "+(page-1)*count+" ,"+count);
+			rs = getSta().executeQuery("select *  from  car  order by carid desc   limit  "+(page-1)*count+" ,"+count);
 			while (rs.next()) {
 
 				cars.add(parsetResultToCar(rs));

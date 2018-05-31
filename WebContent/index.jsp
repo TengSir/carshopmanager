@@ -12,7 +12,7 @@
 	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="js/canvas.js"></script>
 </head>
-<body>
+<body ">
 <canvas id="c" style="position: absolute;z-index: -100;margin: 0px;width: 98%"></canvas>
 	<div class="easyui-layout" style="width:100%;height:650px;">
 		<div data-options="region:'north'" style="height:80px;padding-left: 20px;">
@@ -118,31 +118,32 @@
 			
 			$('#menutree').tree({
 				onClick: function(node){
+					
 					if(node.text=='所有用户'){
-						addPanel(node.text);
+						addPanel(node.text,'allUsers.jsp');
+					}else if(node.text=='所有商品'){
+						addPanel(node.text,'allCars.jsp');
 					}
 				}
 			});
 		})
 	</script>
+	
+	<!-- 添加信选项卡的js -->
 	<script type="text/javascript">
 		var index = 2;
-		function addPanel(t){
+		function addPanel(t,url){
 			index++;
-// 			$('#main').tabs('add',{
-// 				title: t,
-// 				content: "<table class=‘easyui-datagrid‘ title=‘Basic DataGrid‘ style=‘width:100%;height:100%’data-options=singleSelect:true,collapsible:true,url:'datagrid_data1.json',method:'get'><thead><tr><th data-options=‘field:'itemid',width:80‘>Item ID</th><th data-options=‘field:'productid',width:100‘>Product</th><th data-options=‘field:'listprice',width:80,align:'right'‘>List Price</th><th data-options=‘field:'unitcost',width:80,align:'right'‘>Unit Cost</th><th data-options=‘field:'attr1',width:250‘>Attribute</th><th data-options=‘field:'status',width:60,align:'center'‘>Status</th></tr></thead></table>",
-// 				closable: true
-// 			});
 			
 			if ($('#main').tabs('exists', t)){
 				$('#main').tabs('select', t);
 			} else {
-				var content = '<iframe scrolling="auto" frameborder="0"  src="allUsers.jsp" style="width:100%;height:100%;"></iframe>';
+				var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
 				$('#main').tabs('add',{
 					title:t,
 					content:content,
-					closable:true
+					closable:true,
+					iconCls:'icon-man'
 				});
 			}
 		}
@@ -155,7 +156,7 @@
 		}
 	</script>
 	
-	
+	<!--  tree菜单的js -->
 <script type="text/javascript">
 		(function($){
 			function getParentMenu(rootMenu, menu){
@@ -243,6 +244,8 @@
 			})
 		})
 	</script>
+	
+	<!-- jquery动态背景效果库js -->
 	<script>
 			window.onload=function  () {
 			  var canvas=document.getElementById("c");
@@ -334,40 +337,40 @@
 		
 		<!-- 生成图表的js -->
 		<script>
-window.onload = function () {
-
-var options = {
-	title: {
-		text: "商品销售统计图"
-	},
-	subtitles: [{
-		text: "As of November, 2017"
-	}],
-	animationEnabled: true,
-	data: [{
-		type: "pie",
-		startAngle: 40,
-		toolTipContent: "<b>{label}</b>: {y}%",
-		showInLegend: "true",
-		legendText: "{label}",
-		indexLabelFontSize: 16,
-		indexLabel: "{label} - {y}%",
-		dataPoints: [
-			{ y: 48.36, label: "Windows 7" },
-			{ y: 26.85, label: "Windows 10" },
-			{ y: 1.49, label: "Windows 8" },
-			{ y: 6.98, label: "Windows XP" },
-			{ y: 6.53, label: "Windows 8.1" },
-			{ y: 2.45, label: "Linux" },
-			{ y: 3.32, label: "Mac OS X 10.12" },
-			{ y: 4.03, label: "Others" }
-		]
-	}]
-};
-$("#chartContainer").CanvasJSChart(options);
-
-}
-</script>
+			window.onload = function () {
+			
+			var options = {
+				title: {
+					text: "商品销售统计图"
+				},
+				subtitles: [{
+					text: "As of November, 2017"
+				}],
+				animationEnabled: true,
+				data: [{
+					type: "pie",
+					startAngle: 40,
+					toolTipContent: "<b>{label}</b>: {y}%",
+					showInLegend: "true",
+					legendText: "{label}",
+					indexLabelFontSize: 16,
+					indexLabel: "{label} - {y}%",
+					dataPoints: [
+						{ y: 48.36, label: "Windows 7" },
+						{ y: 26.85, label: "Windows 10" },
+						{ y: 1.49, label: "Windows 8" },
+						{ y: 6.98, label: "Windows XP" },
+						{ y: 6.53, label: "Windows 8.1" },
+						{ y: 2.45, label: "Linux" },
+						{ y: 3.32, label: "Mac OS X 10.12" },
+						{ y: 4.03, label: "Others" }
+					]
+				}]
+			};
+			$("#chartContainer").CanvasJSChart(options);
+			
+			}
+		</script>
 
 </body>
 </html>

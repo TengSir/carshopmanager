@@ -7,20 +7,34 @@
 		<include file="struts_product.xml"></include>
 		
 		<!-- 配置字符集 -->
-		<constant name="struts.i18n.encoding" value="GBK"></constant>
-		<constant name="struts.multipart.saveDir" value="/uploads"></constant>
+		<constant name="struts.DevMode" value="true"></constant>
 		<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 		
 		<!-- 配置你写好的后台组建，让struts识别它 -->
 		<package name="user"  extends="struts-default"  abstract="false"  namespace="/admin">
-		
-				<action name="UserAction"  class="com.oracle.strutsdemo.action.UserAction"> 
+				<action name="CodeAction"  class="com.oracle.strutsdemo.action.CodeAction">
+				</action>
+				<action name="UserAction"  class="com.oracle.strutsdemo.action.UserAction" > 
 					<result name="success" type="redirect">/index.jsp</result>
 					<result name="fail">/login.jsp</result>
-				</action>
-				<action name="CodeAction"  class="com.oracle.strutsdemo.action.CodeAction">
-				
+					
+					
+					
+					<result name="loginFail">/login1.jsp</result>
+					<result name="loginSuccess">/index1.jsp</result>
 				</action>
 		</package>
 		
+		
+		<package name="car" extends="struts-default"  namespace="/admin">
+				<default-action-ref name="default"></default-action-ref>
+				<action name="default">
+					<result>/404.jsp</result>
+				</action>
+				<action name="CarAction" class="com.oracle.strutsdemo.action.CarAction">
+				</action>
+				
+				<action name="OrderAction" class="com.oracle.strutsdemo.action.OrderAction">
+				</action>
+		</package>
 	</struts>
