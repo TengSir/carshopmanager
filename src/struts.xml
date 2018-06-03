@@ -10,8 +10,23 @@
 		<constant name="struts.DevMode" value="true"></constant>
 		<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 		
+		
 		<!-- 配置你写好的后台组建，让struts识别它 -->
 		<package name="user"  extends="struts-default"  abstract="false"  namespace="/admin">
+				
+			
+				
+				<interceptors>
+					<interceptor name="sessionInterceptor" class="com.oracle.strutsdemo.interceptor.SessionInterceptor"></interceptor>
+				
+				</interceptors>
+		
+		
+				<global-results>
+					<result name="sessionCheckError">/login.jsp</result>
+				</global-results>
+		
+		
 				<action name="CodeAction"  class="com.oracle.strutsdemo.action.CodeAction">
 				</action>
 				<action name="UserAction"  class="com.oracle.strutsdemo.action.UserAction" > 
@@ -22,11 +37,15 @@
 					
 					<result name="loginFail">/login1.jsp</result>
 					<result name="loginSuccess">/index1.jsp</result>
+					
+					<interceptor-ref name="sessionInterceptor"></interceptor-ref>
+					<interceptor-ref name="defaultStack" /><!-- 如果我们的action调用了自己的拦截器，那么必须在后面添加调用struts的defaultStack的代码，否则不会主动调用系统的拦截器 -->
 				</action>
 		</package>
 		
 		
 		<package name="car" extends="struts-default"  namespace="/admin">
+				<default-interceptor-ref name=""></default-interceptor-ref>
 				<default-action-ref name="default"></default-action-ref>
 				<action name="default">
 					<result>/404.jsp</result>

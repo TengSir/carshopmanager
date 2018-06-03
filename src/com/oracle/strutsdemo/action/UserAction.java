@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
+import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.interceptor.RequestAware;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +22,8 @@ import com.oracle.strutsdemo.util.Responser;
 //component
 //javabean 豆子
 //功能bean和模型bean
+
+@InterceptorRef("sessionChecker")
 public class UserAction  implements RequestAware{
 	private Map<String,Object>  request=new HashMap<>();
 	private  User  u;
@@ -56,12 +59,18 @@ public class UserAction  implements RequestAware{
 		dao=new UserDAOImp();
 	}
 
+	public String index() {
+		return "success";
+	}
+	
 	/**
 	 * 处理登陆的业务方法
 	 * @return
 	 */
 
 	public String   login() {
+		System.out.println(dao);
+		System.out.println(u);
 		User u=dao.login(this.u.getUsername(), MD5.MD5(this.u.getPassword()));
 //		System.out.println("resultUser:"+u);
 		if(u!=null) {
