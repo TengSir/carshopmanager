@@ -45,7 +45,6 @@
 		
 		
 		<package name="car" extends="struts-default"  namespace="/admin">
-				<default-interceptor-ref name=""></default-interceptor-ref>
 				<default-action-ref name="default"></default-action-ref>
 				<action name="default">
 					<result>/404.jsp</result>

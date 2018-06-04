@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%><!DOCTYPE html>
+    pageEncoding="UTF-8"%>
+    <%@taglib  prefix="s"  uri="/struts-tags" %>
+    <!DOCTYPE html>
 <html>
 <head>
 <base  href="${pageContext.request.scheme }://${pageContext.request.serverName}:${pageContext.request.serverPort}/CarShopManager/">
@@ -12,12 +14,14 @@
 	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="js/canvas.js"></script>
 </head>
-<body ">
+<body>
 <canvas id="c" style="position: absolute;z-index: -100;margin: 0px;width: 98%"></canvas>
+
+
 	<div class="easyui-layout" style="width:100%;height:650px;">
 		<div data-options="region:'north'" style="height:80px;padding-left: 20px;">
 			<p>
-			<span style="font-weight:bold; font-size: 30px;font-family:'宋体';margin-right: 50px;text-shadow: -1px -1px 10px orange;">二手车商城后台管理系统</span>
+			<span style="font-weight:bold; font-size: 30px;font-family:'宋体';margin-right: 50px;text-shadow: -1px -1px 10px orange;"><s:property  value="u.username" />二手车商城后台管理系统</span>
 			<img src="${sessionScope.user.image}" style="width: 20px;height: 20px;border:1px solid gray;border-radius: 10px;position: relative;top: 5px;margin-right: 10px;"/>欢迎您：${sessionScope.user.nickname}！<a href="admin/UserAction!logoff.action">安全退出</a>
 			</p>
 		</div>

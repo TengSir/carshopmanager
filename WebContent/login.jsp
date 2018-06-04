@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib  prefix="s"  uri="/struts-tags" %>
 
 <!DOCTYPE html>
 <html>
 <head>
+
 <base  href="${pageContext.request.scheme }://${pageContext.request.serverName}:${pageContext.request.serverPort}/CarShopManager/">
 	<meta charset="UTF-8">
 	<title>二手车商城后台管理系统</title>

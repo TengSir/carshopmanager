@@ -26,6 +26,16 @@ import com.oracle.strutsdemo.util.Responser;
 @InterceptorRef("sessionChecker")
 public class UserAction  implements RequestAware{
 	private Map<String,Object>  request=new HashMap<>();
+	
+	private User  user;
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 	private  User  u;
 	
 	public User getU() {
@@ -69,10 +79,8 @@ public class UserAction  implements RequestAware{
 	 */
 
 	public String   login() {
-		System.out.println(dao);
-		System.out.println(u);
 		User u=dao.login(this.u.getUsername(), MD5.MD5(this.u.getPassword()));
-//		System.out.println("resultUser:"+u);
+		user=u;
 		if(u!=null) {
 			ServletActionContext.getRequest().getSession().setAttribute("user", u);
 			return "success";
