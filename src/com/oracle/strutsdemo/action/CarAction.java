@@ -1,6 +1,7 @@
 package com.oracle.strutsdemo.action;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 import org.json.JSONArray;
@@ -12,6 +13,14 @@ import com.oracle.strutsdemo.model.bean.Car;
 import com.oracle.strutsdemo.util.Responser;
 
 public class CarAction {
+	private List cars;
+	
+	public List getCars() {
+		return cars;
+	}
+	public void setCars(List cars) {
+		this.cars = cars;
+	}
 	private Car  car;
 	
 	public Car getCar() {
@@ -83,5 +92,17 @@ public class CarAction {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	
+	public String  addCar() {
+		System.out.println("add car method");
+		for(Object c:cars)
+		{
+			System.out.println(c);
+		}
+//		System.out.println(car.toString());
+		
+		return null;
 	}
 }
