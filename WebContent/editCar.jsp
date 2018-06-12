@@ -70,11 +70,10 @@
 			        'swf'      : 'uploadify.swf',
 			        'uploader' : 'admin/CarAction!updateCar.action',
 			        'onUploadSuccess' : function(file, data, response) {
-			        	$("#imgPrew").attr("src",data);
-			            //alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
-			        }
-			        // Put your options here
-			    });
+				        	$("#imgPrew").attr("src",data);
+				            //alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+				        }
+				    });
 		})
 	</script>
 
