@@ -9,6 +9,7 @@
 		<!-- 配置字符集 -->
 		<constant name="struts.DevMode" value="true"></constant>
 		<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+		<constant name="struts.multipart.maxSize" value="5242880"></constant>
 		
 		
 		<!-- 配置你写好的后台组建，让struts识别它 -->
@@ -50,6 +51,10 @@
 					<result>/404.jsp</result>
 				</action>
 				<action name="CarAction" class="com.oracle.strutsdemo.action.CarAction">
+					<result name="tag">/tag.jsp</result>
+				</action>
+				<action name="CarAction1" class="com.oracle.strutsdemo.action.CarAction" method="listAllCars">
+					<result name="tag">/tag.jsp</result>
 				</action>
 				
 				<action name="OrderAction" class="com.oracle.strutsdemo.action.OrderAction">

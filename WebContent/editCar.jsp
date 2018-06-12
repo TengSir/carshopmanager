@@ -9,8 +9,11 @@
 	<link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<link rel="stylesheet" type="text/css" href="css/uploadify.css">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="js/jquery.uploadify.min.js"></script>
+	
 </head>
 <body style="margin: 0px;padding: 0px;">
 <div class="easyui-panel" style="width:100%;max-width:100%;margin: 0px;padding: 0px;">
@@ -29,7 +32,9 @@
 					燃料类型:<input class="easyui-textbox" name="name" data-options="required:true" style="width: 120px;height: 20px;">
 				</div>
 				<div title="车辆图片" data-options="iconCls:'icon-large-picture'" style="overflow: hidden;">
-					<img src="images/temp/1.jpg" style="width: 100%;height: 100%"/>
+<!-- 					<img src="images/temp/1.jpg" style="width: 100%;height: 100%"/> -->
+					<img  id="imgPrew"  style="width: 100px;height: 80px;border:1px solid red"/>
+					<input type="file" name="image" id="image" />
 				</div>
 				<div title="车辆视频" data-options="iconCls:'icon-large-clipart'" style="overflow: hidden;">
 					<video src="videos/1.mp4"  style="width: 100%;height:100%" controls="controls" preload="auto"></video>
@@ -55,6 +60,22 @@
 		function clearForm(){
 			$('#ff').form('clear');
 		}
+		
+		
+		$(document).ready(function(){
+			 $('#image').uploadify({
+				 	'auto'    :  true,
+				 	'fileObjName':'image',
+				 	'buttonText' : '选中图片',
+			        'swf'      : 'uploadify.swf',
+			        'uploader' : 'admin/CarAction!updateCar.action',
+			        'onUploadSuccess' : function(file, data, response) {
+			        	$("#imgPrew").attr("src",data);
+			            //alert('The file ' + file.name + ' was successfully uploaded with a response of ' + response + ':' + data);
+			        }
+			        // Put your options here
+			    });
+		})
 	</script>
 
 
